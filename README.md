@@ -44,8 +44,8 @@ Test Case 5 Output:
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url-here>
-    cd <repository-directory>
+    git clone https://github.com/Tushar-Wagdare/CPPWrapperForCFileHandling
+    cd CPPWrapperForCFileHandling
     ```
 2.  **Locate the code:** The main wrapper class `File` is defined in `C++_WRAPPER/file.h`.
 
