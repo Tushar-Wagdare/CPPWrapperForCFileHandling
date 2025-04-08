@@ -37,15 +37,14 @@ class File
         std::string m_filename;  
         
         public:
-        static char s[256];
-
         File()
         {
             m_fp = tmpfile();
             if(!m_fp)
             {
-                sprintf(s, "Error: Unable to create temporary file. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw error_opning_file(s);
+                std::string error_msg = "Error: Unable to create temporary file. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw error_opning_file(error_msg);
             }
         }
 
@@ -59,8 +58,9 @@ class File
         {
             if(!open(m_filename, mode))
             {
-                sprintf(s, "Error: Failed to open \"%s\" with mode \"%s\". Line[%d], Function[%s()], File[%s]", m_filename.c_str(), mode.c_str(), __LINE__, __func__, __FILE__);
-                throw error_opning_file(s);
+                std::string error_msg = "Error: Failed to open \"" + m_filename + "\" with mode \"" + mode + "\" Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw error_opning_file(error_msg);
             }
                 
             puts("File opening successfull...");
@@ -104,8 +104,9 @@ class File
         {
             if(!is_open())
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             size_t items_readed = fread(ptr, element_size, element_count, m_fp);
@@ -117,8 +118,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             size_t items_written = fwrite(ptr, element_size, element_count, m_fp);
@@ -148,8 +150,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             int error = feof(m_fp);
@@ -167,8 +170,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return feof(m_fp);
@@ -178,8 +182,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fseek(m_fp, offset, static_cast<int>(origin)) == 0;
@@ -189,8 +194,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return ftell(m_fp);
@@ -200,8 +206,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s); 
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg); 
             }
 
             ::rewind(m_fp); 
@@ -211,8 +218,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fflush(m_fp) == 0;
@@ -222,8 +230,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fgetc(m_fp);
@@ -233,8 +242,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fputc(c, m_fp);
@@ -244,8 +254,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fgets(string, max_char, m_fp);
@@ -255,8 +266,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fputs(string, m_fp);
@@ -266,8 +278,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             } 
 
             va_list ap;
@@ -284,8 +297,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw error_opning_file(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             va_list ap;
@@ -300,15 +314,17 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
             
             m_fp = freopen(m_filename.c_str(), mode.c_str(), m_fp);
             if(m_fp == NULL)
             {
-                sprintf(s, "Error: Failed to reopen file. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw error_opning_file(s);
+                std::string error_msg = "Error: Failed to open \"" + m_filename + "\" with mode \"" + mode + "\" Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw error_opning_file(error_msg);
             }
 
             return true;
@@ -323,8 +339,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fgetpos(m_fp, pos) == 0;
@@ -334,8 +351,9 @@ class File
         {
             if (!is_open()) 
             {
-                sprintf(s, "Error: Bad file discriptor. Line[%d], Function[%s()], File[%s]", __LINE__, __func__, __FILE__);
-                throw bad_file_discriptor(s);
+                std::string error_msg = "Error: Bad file discriptor. Line[" + std::to_string(__LINE__) +
+                "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw bad_file_discriptor(error_msg);
             }
 
             return fsetpos(m_fp, pos) == 0;
