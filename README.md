@@ -21,7 +21,9 @@ The primary goal is to prevent resource leaks by automatically closing the file 
 
 *   `C++_WRAPPER/`: Contains the core C++ wrapper code.
     *   `file.h`: Header file defining the `File` class.
-    *   `use_file.cpp`: Example usage and test cases for the `File` class.
+    *   `sample_use.cpp`: Example usage for the `File` class.
+    *   `test_cases_part_1.cpp`: Test case part one of `File` class.
+    *   `test_cases_part_2.cpp`: Test case part two of `File` class.
 *   `C_STYLE/`: Contains various example C programs demonstrating raw `<cstdio>` usage (likely for reference or comparison).
   
 # Test Case Outputs
