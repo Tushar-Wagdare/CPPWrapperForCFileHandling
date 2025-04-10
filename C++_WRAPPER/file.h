@@ -37,7 +37,7 @@ class bad_file_discriptor : public std::runtime_error
 
 
 
-// Class File
+//==================== File Class ====================
 class File
 {
     private:
