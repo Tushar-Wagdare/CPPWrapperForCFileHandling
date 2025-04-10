@@ -53,7 +53,7 @@ class File
         *              stores file pointer in class's private variable member m_fp.
         * 
         * @param[in]   filename: name of the file to open/create.
-        * @param[in]   mode: mode in which file should o     pen/create.
+        * @param[in]   mode: mode in which file should open/create.
         *
         * @throws      error_opning_file: If Unable to Create/Open file.
         */ 
@@ -61,13 +61,12 @@ class File
         {
             if(!open(m_filename, mode))
             {
-                if (!open(m_filename, mode)) 
-                {
-                    std::string error_msg = "Error: Failed to open \"" + m_filename + "\" with mode \"" + mode +
-                                            "\" - Reason: " + strerror(errno) + 
-                                            ". Line[" + std::to_string(__LINE__) + "], Function[" + __func__ + "], File[" + __FILE__ + "]";
-                    throw error_opning_file(error_msg);
-                }
+                
+                std::string error_msg = "Error: Failed to open \"" + m_filename + "\" with mode \"" + mode +
+                                        "\" - Reason: " + strerror(errno) + 
+                                        ". Line[" + std::to_string(__LINE__) + "], Function[" + __func__ + "], File[" + __FILE__ + "]";
+                throw error_opning_file(error_msg);
+                
             }   
         }
 
@@ -99,7 +98,7 @@ class File
         *
         * @details Closes the opened/created file and clear the filename also.
         */ 
-        ~File()
+        ~File() noexcept
         {
             close();
             m_filename.clear();
@@ -157,7 +156,7 @@ class File
         /***
         * @brief   Clears active error flags to perform further operations.
         */
-        void clear_errors() const
+        void clear_errors() 
         {
             if(is_open())
             {
@@ -223,7 +222,7 @@ class File
         * 
         * @return       number of items read.
         */
-        size_t read(void* ptr, size_t element_size, size_t element_count) const
+        size_t read(void* ptr, size_t element_size, size_t element_count) 
         {
             if(!is_open())
             {
@@ -250,7 +249,7 @@ class File
         * 
         * @return      number of items written.
         */
-        size_t write(const void* ptr, size_t element_size, size_t element_count) const
+        size_t write(const void* ptr, size_t element_size, size_t element_count) 
         {
             if (!is_open()) 
             {
@@ -283,7 +282,7 @@ class File
         * 
         * @return  return read character or EOF for end of file or any error.
         */
-        int getchar() const
+        int getchar() 
         {
             if (!is_open()) 
             {
@@ -302,7 +301,7 @@ class File
         * 
         * @return      return character written or EOF for end of file or any error.
         */
-        int putchar(char c) const
+        int putchar(char c) 
         {
             if (!is_open()) 
             {
@@ -318,11 +317,11 @@ class File
         * @brief        Reads next input line from file.
         * 
         * @param[out]   string: read string will stored in string param.
-        * @param[in]    max_char: if given then atmost max_char-1 will be read otherwise 63 charactors will be read
+        * @param[in]    max_char: if given then atmost max_char-1 will be read otherwise 63 characters will be read
         * 
         * @return       returns read line or EOF for end of file or any error.
         */
-        char* getstring(char* string, int max_char = 64) const
+        char* getstring(char* string, int max_char = 64) 
         {
             if (!is_open()) 
             {
@@ -341,7 +340,7 @@ class File
         * 
         * @return      returns true on success or false on end of file or any error.
         */
-        bool putstring(const char* string) const
+        bool putstring(const char* string) 
         {
             if (!is_open()) 
             {
@@ -397,7 +396,7 @@ class File
         * 
         * @return      returns false if EOF occured otherwise true.
         */
-        bool scanInFile(const char* format, ...) const
+        bool scanInFile(const char* format, ...) 
         {
             if (!is_open()) 
             {
@@ -461,7 +460,7 @@ class File
         * 
         * @return  true on success otherwise false.
         */
-        bool flush() const
+        bool flush() 
         {
             if (!is_open()) 
             {
@@ -513,7 +512,7 @@ class File
         * 
         * @return      returns true on success otherwise false.
         */
-        bool seek(long offset, SeekOrigin origin) const
+        bool seek(long offset, SeekOrigin origin) 
         {
             if (!is_open()) 
             {
@@ -545,7 +544,7 @@ class File
         /***
         * @brief   Sets file pointer to begining.
         */
-        void rewind() const
+        void rewind() 
         {
             if (!is_open()) 
             {
@@ -564,7 +563,7 @@ class File
         * 
         * @return       return true on success otherwise false.
         */
-        bool get_pos(fpos_t* pos) const
+        bool get_pos(fpos_t* pos) 
         {
             if (!is_open()) 
             {
@@ -583,7 +582,7 @@ class File
         * 
         * @return      return true on success otherwise false.
         */
-        bool set_pos(const fpos_t* pos) const
+        bool set_pos(const fpos_t* pos) 
         {
             if (!is_open()) 
             {

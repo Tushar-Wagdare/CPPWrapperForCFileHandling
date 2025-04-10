@@ -1,10 +1,6 @@
 #include <iostream>
 #include "file.h"
 
-
-char File::s[];
-
-
 void test_case_1(void);
 void test_case_2(void);
 void test_case_3(void);
