@@ -24,7 +24,6 @@ The primary goal is to prevent resource leaks by automatically closing the file 
     *   `use_file.cpp`: Example usage and test cases for the `File` class.
 *   `C_STYLE/`: Contains various example C programs demonstrating raw `<cstdio>` usage (likely for reference or comparison).
 *   `TestCasesOutput/`: Contains screenshots, presumably showing the output of the test cases in `use_file.cpp`.
-*   `.gitignore`: Specifies intentionally untracked files that Git should ignore. *(Recommendation: Enhance this file to ignore build artifacts like `*.exe`, `*.obj`, `*.o` etc.)*
   
 ## Test Case Outputs
 Test Case 1-3 Output:
