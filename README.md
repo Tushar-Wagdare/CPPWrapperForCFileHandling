@@ -7,6 +7,36 @@ The primary goal is to prevent resource leaks by automatically closing the file 
 # Features
 
 *   **RAII:** Automatic `fclose()` via destructor ensures files are closed even if exceptions occur.
+*   **Doxygen Comments:** All methods comes up with Doxygen comments.
+*   **Example:**
+*   ```cpp
+        //==================== CONSTRUCTORS ====================
+        // --- Doxygen comment ---
+        /***
+        * @brief       Open/Create file with provided filename and mode.
+        *
+        * @details     Open/Create file with provided filename and mode and 
+        *              stores file pointer in class's private variable member m_fp.
+        * 
+        * @param[in]   filename: name of the file to open/create.
+        * @param[in]   mode: mode in which file should open/create.
+        *
+        * @throws      error_opning_file: If Unable to Create/Open file.
+        */ 
+        File(const std::string& filename, const std::string& mode) : m_fp(NULL), m_filename(filename)
+        {
+            if(!open(m_filename, mode))
+            {
+                // Error string construction
+                std::string error_msg = "Error: Failed to open \"" + m_filename + "\" with mode \"" +
+                                        mode + "\" - Reason: " + strerror(errno) + 
+                                        ". Line[" + std::to_string(__LINE__) + "], Function[" +
+                                        __func__ + "], File[" + __FILE__ + "]";
+    
+                throw error_opning_file(error_msg); // through exception
+            }   
+        }
+    ```
 *   **Object-Oriented Interface:** Provides methods like `open()`, `read()`, `write()`, `seek()`, etc., on a `File` object.
 *   **Resource Safety:** Copy constructor/assignment and move constructor/assignment are deleted to prevent accidental mismanagement of the underlying `FILE*`.
 *   **Comprehensive Function Wrapping:** Wraps most common `<cstdio>` functions, including:
