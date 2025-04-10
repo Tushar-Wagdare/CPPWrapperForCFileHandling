@@ -1,6 +1,6 @@
 C Style File  Handling Wrapped In C++ Class
 
-A C++ RAII (Resource Acquisition Is Initialization) wrapper class for standard C file I/O functions (`<cstdio>`). This project provides a safer and more object-oriented way to handle C-style `FILE*` resources in C++ applications.
+A C++ RAII (Resource Acquisition Is Initialization) wrapper class for standard C file I/O functions. This project provides a safer and more object-oriented way to handle C-style `FILE*` resources in C++ applications.
 
 The primary goal is to prevent resource leaks by automatically closing the file handle when the wrapper object goes out of scope, leveraging C++ destructors.
 
