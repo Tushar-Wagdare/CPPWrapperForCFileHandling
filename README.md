@@ -23,7 +23,6 @@ The primary goal is to prevent resource leaks by automatically closing the file 
     *   `file.h`: Header file defining the `File` class.
     *   `use_file.cpp`: Example usage and test cases for the `File` class.
 *   `C_STYLE/`: Contains various example C programs demonstrating raw `<cstdio>` usage (likely for reference or comparison).
-*   `TestCasesOutput/`: Contains screenshots, presumably showing the output of the test cases in `use_file.cpp`.
   
 # Test Case Outputs
 ## Part one
