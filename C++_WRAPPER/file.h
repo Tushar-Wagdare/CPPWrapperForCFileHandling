@@ -44,16 +44,16 @@ class File
         public:
         //==================== CONSTRUCTORS ====================
         /***
-         * @brief   Open/Create file with provoided filename and mode.
-         *
-         * @details Open/Create file with provoided filename and mode and 
-         *          stores file pointer in class's private variable member m_fp.
-         * 
-         * @param   filename: name of the file to open/create.
-         * @param   mode: mode in which file should open/create.
-         *
-         * @throws  error_opning_file: If Unable to Create/Open file.
-         */ 
+        * @brief   Open/Create file with provoided filename and mode.
+        *
+        * @details Open/Create file with provoided filename and mode and 
+        *          stores file pointer in class's private variable member m_fp.
+        * 
+        * @param   filename: name of the file to open/create.
+        * @param   mode: mode in which file should open/create.
+        *
+        * @throws  error_opning_file: If Unable to Create/Open file.
+        */ 
         File(const std::string& filename, const std::string& mode) : m_fp(NULL), m_filename(filename)
         {
             if(!open(m_filename, mode))
@@ -69,14 +69,14 @@ class File
         }
 
         /***
-         * @brief   Create temporary file.
-         *
-         * @details If user have not provoided filename then this default construtor 
-         *          creates temporary file with mode "wb+". Removes when closed or 
-         *          programe gets terminated sucessfully.
-         *
-         * @throws error_opning_file: If Unable to create temporary file.
-         */ 
+        * @brief   Create temporary file.
+        *
+        * @details If user have not provoided filename then this default construtor 
+        *          creates temporary file with mode "wb+". Removes when closed or 
+        *          programe gets terminated sucessfully.
+        *
+        * @throws error_opning_file: If Unable to create temporary file.
+        */ 
         File()
         {
             m_fp = tmpfile();
@@ -96,10 +96,10 @@ class File
 
         //==================== DESTRUCTOR ====================
         /***
-         * @brief   Closes opened/created file.
-         *
-         * @details Closes the opened/created file and clear the filename also.
-         */ 
+        * @brief   Closes opened/created file.
+        *
+        * @details Closes the opened/created file and clear the filename also.
+        */ 
         ~File()
         {
             close();
@@ -110,22 +110,22 @@ class File
 
         //==================== FILE STATUS/ERROR DETECTION ====================
         /***
-         * @brief   Checks file open status.
-         *
-         * @details Uses m_fp variable member of class to check file opening status.
-         *          
-         * @return  true if m_fp is not NULL otherwise false.
-         */
+        * @brief   Checks file open status.
+        *
+        * @details Uses m_fp variable member of class to check file opening status.
+        *          
+        * @return  true if m_fp is not NULL otherwise false.
+        */
         bool is_open() const
         {
             return m_fp != NULL;
         }
 
         /***
-         * @brief   Checks any error indicator is active in file.
-         *          
-         * @return  true if any error indicator is active otherwise false
-         */
+        * @brief   Checks any error indicator is active in file.
+        *          
+        * @return  true if any error indicator is active otherwise false
+        */
         bool is_error()
         {
             if (!is_open()) 
@@ -147,10 +147,10 @@ class File
         }
 
         /***
-         * @brief   Checks for end of file.
-         *          
-         * @return  true if end of file occured otherwise false.
-         */
+        * @brief   Checks for end of file.
+        *          
+        * @return  true if end of file occured otherwise false.
+        */
         bool is_eof()
         {
             if (!is_open()) 
@@ -164,8 +164,8 @@ class File
         }
 
         /***
-         * @brief   Clears active error flags to perform further operations.
-         */
+        * @brief   Clears active error flags to perform further operations.
+        */
         void claer_errors()
         {
             if(is_open())
@@ -178,17 +178,17 @@ class File
 
         //==================== HELPER FUNCTIONS ====================
         /***
-         * @brief   Helper function to open file
-         *
-         * @details First checks file is opened if yes then closes priviosly opned file
-         *          and opens/create new file with given mode and stores the file pointer
-         *          in private variable member m_fp.
-         * 
-         * @param   filename:name of the file to open/create 
-         * @param   mode:mode in which file is opened/created. 
-         * 
-         * @return  if file opened successfully then return true otherwise false. 
-         */
+        * @brief   Helper function to open file
+        *
+        * @details First checks file is opened if yes then closes priviosly opned file
+        *          and opens/create new file with given mode and stores the file pointer
+        *          in private variable member m_fp.
+        * 
+        * @param   filename:name of the file to open/create 
+        * @param   mode:mode in which file is opened/created. 
+        * 
+        * @return  if file opened successfully then return true otherwise false. 
+        */
         bool open(const std::string& filename, const std::string& mode)
         {
             if(is_open())
@@ -203,11 +203,11 @@ class File
         }
 
         /***
-         * @brief   Helper function to close file
-         *
-         * @details Checks if file is opened, if true then closes file and assign
-         *          NULL to file pointer variable.
-         */
+        * @brief   Helper function to close file
+        *
+        * @details Checks if file is opened, if true then closes file and assign
+        *          NULL to file pointer variable.
+        */
         void close()
         {
             if(m_fp)
@@ -222,17 +222,17 @@ class File
 
         //==================== FILE OPERATIONS ====================
         /***
-         * @brief   Reads number of items(element_count) in file to buffer.
-         *
-         * @details First check file is opened or not if opened then performs 
-         *          read operation otherwise throws exception.
-         * 
-         * @param   ptr: buffer to store readed items
-         * @param   element_size: size of each element in bytes.
-         * @param   element_count: number of element to read.
-         * 
-         * @return  number of items readed.
-         */
+        * @brief   Reads number of items(element_count) in file to buffer.
+        *
+        * @details First check file is opened or not if opened then performs 
+        *          read operation otherwise throws exception.
+        * 
+        * @param   ptr: buffer to store readed items
+        * @param   element_size: size of each element in bytes.
+        * @param   element_count: number of element to read.
+        * 
+        * @return  number of items readed.
+        */
         size_t read(void* ptr, size_t element_size, size_t element_count)
         {
             if(!is_open())
@@ -249,17 +249,17 @@ class File
         }
 
         /***
-         * @brief   Writes number of items(element_count) in file from buffer.
-         *
-         * @details First check file is opened or not if opened then performs 
-         *          write operation otherwise throws exception.
-         * 
-         * @param   ptr: buffer to read data.
-         * @param   element_size: size of each element in bytes.
-         * @param   element_count: number of element to write from buffer.
-         * 
-         * @return  number of items written.
-         */
+        * @brief   Writes number of items(element_count) in file from buffer.
+        *
+        * @details First check file is opened or not if opened then performs 
+        *          write operation otherwise throws exception.
+        * 
+        * @param   ptr: buffer to read data.
+        * @param   element_size: size of each element in bytes.
+        * @param   element_count: number of element to write from buffer.
+        * 
+        * @return  number of items written.
+        */
         size_t write(void* ptr, size_t element_size, size_t element_count)
         {
             if (!is_open()) 
@@ -275,22 +275,22 @@ class File
         }
 
         /***
-         * @brief   Creates temporary filename.
-         * 
-         * @param   s: if provoided then generated file name will stored is s.
-         * 
-         * @return  pointer to the internal static array.
-         */
+        * @brief   Creates temporary filename.
+        * 
+        * @param   s: if provoided then generated file name will stored is s.
+        * 
+        * @return  pointer to the internal static array.
+        */
         char* get_temp_name(char s[] = NULL)
         {
             return tmpnam(s);
         }
 
         /***
-         * @brief   Read next charactor from file.
-         * 
-         * @return  return readed charactor or EOF for end of file or any error.
-         */
+        * @brief   Read next charactor from file.
+        * 
+        * @return  return readed charactor or EOF for end of file or any error.
+        */
         int getchar()
         {
             if (!is_open()) 
@@ -303,13 +303,13 @@ class File
             return fgetc(m_fp);
         }
 
-         /***
-         * @brief   Writes charactor.
-         * 
-         * @param   c: Writes charactor c in file.
-         * 
-         * @return  return charactor written or EOF for end of file or any error.
-         */
+        /***
+        * @brief   Writes charactor.
+        * 
+        * @param   c: Writes charactor c in file.
+        * 
+        * @return  return charactor written or EOF for end of file or any error.
+        */
         int putchar(char c)
         {
             if (!is_open()) 
@@ -322,14 +322,14 @@ class File
             return fputc(c, m_fp);
         }
 
-         /***
-         * @brief   Reads next input line from file.
-         * 
-         * @param   string: readed string will stored in string param.
-         * @param   max_char: if given then atmost max_char-1 will be readed otherwise 63 charactors will be readed
-         * 
-         * @return  returns readed line or EOF for end of file or any error.
-         */
+        /***
+        * @brief   Reads next input line from file.
+        * 
+        * @param   string: readed string will stored in string param.
+        * @param   max_char: if given then atmost max_char-1 will be readed otherwise 63 charactors will be readed
+        * 
+        * @return  returns readed line or EOF for end of file or any error.
+        */
         char* getstring(char* string, int max_char = 64)
         {
             if (!is_open()) 
@@ -343,13 +343,13 @@ class File
         }
 
         /***
-         * @brief   Writes string in file.
-         * 
-         * @param   string: write give 'string' in file.
-         * 
-         * @return  returns 0 on success or or EOF for end of file or any error.
-         */
-        int putstring(char* string)
+        * @brief   Writes string in file.
+        * 
+        * @param   string: write give 'string' in file.
+        * 
+        * @return  returns true on success or false on end of file or any error.
+        */
+        bool putstring(char* string)
         {
             if (!is_open()) 
             {
@@ -358,17 +358,17 @@ class File
                 throw bad_file_discriptor(error_msg);
             }
 
-            return fputs(string, m_fp);
+            return fputs(string, m_fp) != EOF;
         }
 
         /***
-         * @brief   Prints formatted input in the file.
-         * 
-         * @param   format: format of the input string.
-         * @param   ...: Variadic argument list.
-         * 
-         * @return  returns true if number charactors writtened in file is positive otherwise false.
-         */
+        * @brief   Prints formatted input in the file.
+        * 
+        * @param   format: format of the input string.
+        * @param   ...: Variadic argument list.
+        * 
+        * @return  returns true if number of charactors writtened in file is positive otherwise false.
+        */
         bool printInFile(const char* format, ...)
         {
             if (!is_open()) 
@@ -397,14 +397,14 @@ class File
             }
         }
 
-         /***
-         * @brief   Prints formatted input in the file.
-         * 
-         * @param   format: format of the input string.
-         * @param   ...: Variadic argument list.
-         * 
-         * @return  returns number charactors writtened in file or nagative number on error.
-         */
+        /***
+        * @brief   Scans file
+        * 
+        * @param   format: format of the arguments.
+        * @param   ...: Variadic argument list which stores scanned items.
+        * 
+        * @return  returns false if EOF occured otherwise true.
+        */
         bool scanInFile(const char* format, ...)
         {
             if (!is_open()) 
@@ -434,6 +434,13 @@ class File
             }
         }
 
+        /***
+        * @brief   reopens file with given mode.
+        * 
+        * @param   mode: mode to change while reopening file.
+        * 
+        * @return  returns true on successfull reopening of the file otherwise throws exception.
+        */
         bool reopen(std::string& mode)
         {
             if (!is_open()) 
@@ -454,6 +461,13 @@ class File
             return true;
         }
 
+        /***
+        * @brief   Flushes any buffered output befour next statement.
+        * 
+        * @details Ensures that the data is readed or written completely.
+        * 
+        * @return  true on success otherwise false.
+        */
         bool flush()  
         {
             if (!is_open()) 
@@ -469,11 +483,25 @@ class File
 
 
         //==================== GETTER FUNCTIONS ====================
+        /***
+        * @brief   To get file handle.
+        * 
+        * @details Used to get file handle of type FILE*.
+        * 
+        * @return  returns file handle.
+        */
         FILE* get_handle() const
         {
             return m_fp;
         }
 
+        /***
+        * @brief   To get file name.
+        * 
+        * @details Used to get filename associated with the class object.
+        * 
+        * @return  returns file name
+        */
         const std::string& get_filename() const 
         {
             return m_filename;
@@ -482,6 +510,16 @@ class File
         
 
         //==================== FILE POSITIONING ====================
+        /***
+        * @brief   Used to set file pointer.
+        * 
+        * @param   offset: number of bytes to shift file pointer.
+        * @param   origin: from where shifting of file pointer will be done.
+        *                  allowable mode: Set(from origin), Current(from current position of file pointer) 
+        *                  or End(from end of the file).
+        * 
+        * @return  returns true on success otherwise false.
+        */
         bool seek(long offset, SeekOrigin origin)
         {
             if (!is_open()) 
@@ -494,6 +532,11 @@ class File
             return fseek(m_fp, offset, static_cast<int>(origin)) == 0;
         }
     
+        /***
+        * @brief   To get current position of file pointer.
+        * 
+        * @return  return byte offset from file's base address to current position of file pointer.
+        */
         long tell() 
         {
             if (!is_open()) 
@@ -506,6 +549,9 @@ class File
             return ftell(m_fp);
         }
     
+        /***
+        * @brief   Sets file pointer to begining.
+        */
         void rewind()
         {
             if (!is_open()) 
@@ -518,6 +564,13 @@ class File
             ::rewind(m_fp); 
         }
 
+        /***
+        * @brief   Records current file position.
+        * 
+        * @param   pos: stores current file position in fpos_t data types variable.
+        * 
+        * @return  return true on success otherwise false.
+        */
         bool get_pos(fpos_t* pos)
         {
             if (!is_open()) 
@@ -530,6 +583,13 @@ class File
             return fgetpos(m_fp, pos) == 0;
         }
 
+        /***
+        * @brief   Sets priviosly Recorded file position.
+        * 
+        * @param   pos: Priviously recorded file position
+        * 
+        * @return  return true on success otherwise false.
+        */
         bool set_pos(fpos_t* pos)
         {
             if (!is_open()) 
